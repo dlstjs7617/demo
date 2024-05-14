@@ -1,7 +1,7 @@
 import Home from "./Home";
 
 // props ({key-value})
-// ㄴ 자식 요소가 부모에게 전달하는 정보(값) 
+// ㄴ 자식 요소가 부모에게 전달하는 정보(값)
 
 function MyComponent({message}) {
     return (
@@ -16,7 +16,7 @@ function MyComponent({message}) {
                 "border": "none",
                 "borderRadius": "10px",
                 "cursor": "pointer"
-            }} />
+            }}/>
         </>
     );
 }
