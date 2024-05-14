@@ -22,12 +22,13 @@ import {
 import React, { useEffect, useRef, useState } from "react";
 import { MdOndemandVideo } from "react-icons/md";
 import { AiFillSun, AiFillMoon } from "react-icons/ai";
+import { Image } from '@chakra-ui/react';
 
 const BookList = () => {
   // useState 는 화면 랜더링에 반영됨
   const [bookList, setBookList] = useState([]);
   const [page, setPage] = useState(1);
-  const [search, setSearch] = useState("달고나 커피");
+  const [search, setSearch] = useState("김치");
 
   // useRef 는 화면 랜더링 반영되지 않는 참조값
   const pageCount = useRef(1);
@@ -39,7 +40,7 @@ const BookList = () => {
 
   const fetchBooks = async () => {
     const response = await fetch(
-      `https://dapi.kakao.com/v2/search/vclip?query=${search}&page=${page}`,
+      `https://dapi.kakao.com/v3/search/book?query=${search}&page=${page}`,
       {
         method: "GET",
         headers: {
@@ -73,7 +74,7 @@ const BookList = () => {
     <>
       <Box>
         <Heading color={color}>
-          <Icon as={MdOndemandVideo} boxSize={"1.5em"} /> 동영상 검색 목록
+          <Icon as={MdOndemandVideo} boxSize={"1.5em"} /> 책 검색 목록
         </Heading>
 
         {colorMode === "light" ? (
@@ -110,6 +111,14 @@ const BookList = () => {
               {bookList.map((book, index) => (
                 <>
                   <Tr>
+                    <Td>
+                      <Td>
+                        <Image
+                        src= {book.thumbnail}
+                        borderRadius='lg'
+                        />
+                        </Td>
+                    </Td>
                     <Td>{(page - 1) * 10 + index + 1}</Td>
                     <Td>
                       <a href={book.url}>{book.title}</a>

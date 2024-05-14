@@ -22,10 +22,15 @@ import {
 import React, { useEffect, useRef, useState } from "react";
 import { MdOndemandVideo } from "react-icons/md";
 import { AiFillSun, AiFillMoon } from "react-icons/ai";
+import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react';
+import { Image } from '@chakra-ui/react';
+import { SimpleGrid } from "@chakra-ui/react";
+import { Text } from "@chakra-ui/react";
+
 
 const VideoList = () => {
   // useState 는 화면 랜더링에 반영됨
-  const [bookList, setBookList] = useState([]);
+  const [videoList, setVideoList] = useState([]);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("달고나 커피");
 
@@ -37,7 +42,7 @@ const VideoList = () => {
   const color = useColorModeValue("red.500", "white");
   const buttonScheme = useColorModeValue("blackAlpha", "whiteAlpha");
 
-  const fetchBooks = async () => {
+  const fetchVideos = async () => {
     const response = await fetch(
       `https://dapi.kakao.com/v2/search/vclip?query=${search}&page=${page}`,
       {
@@ -58,7 +63,7 @@ const VideoList = () => {
     pageCount.current = pageCount.current > 15 ? 15 : pageCount.current;
     console.log(pageCount.current);
 
-    setBookList(data.documents);
+    setVideoList(data.documents);
   };
 
   const changeSearch = (e) => {
@@ -66,7 +71,7 @@ const VideoList = () => {
   };
 
   useEffect(() => {
-    fetchBooks();
+    fetchVideos();
   }, [page, search]);
 
   return (
@@ -97,31 +102,25 @@ const VideoList = () => {
           size="lg"
           variant="filled"
         />
-        <TableContainer>
-          <Table variant={"striped"} colorScheme="blackAlpha">
-            <Thead>
-              <Tr>
-                <Th>No</Th>
-                <Th>Title</Th>
-                <Th>Author</Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              {bookList.map((book, index) => (
-                <>
-                  <Tr>
-                    <Td>{(page - 1) * 10 + index + 1}</Td>
-                    <Td>
-                      <a href={book.url}>{book.title}</a>
-                    </Td>
-                    <Td>{book.author}</Td>
-                  </Tr>
-                </>
+          
+        <SimpleGrid columns={5} spacing={10}>
+        {videoList.map((video, index) => (
+          <>
+              <Card maxW='sm'>
+                <CardBody>
+              <Image
+              src= {video.thumbnail}
+              borderRadius='lg'
+              />
+              <Text>
+                {video.title}
+              </Text>
+          </CardBody>
+        </Card>
+              </>
               ))}
-            </Tbody>
-            <Tfoot></Tfoot>
-          </Table>
-        </TableContainer>
+            
+        </SimpleGrid>
         <HStack>
           {Array.from({ length: pageCount.current }, (_, index) => (
             <>
