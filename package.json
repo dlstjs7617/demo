@@ -2,7 +2,7 @@
   "name": "demo",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://github.com/dlstjs7617.github.io/demo",
+  "homepage": "https://dlstjs7617.github.io/demo",
   "dependencies": {
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.4",
@@ -11,6 +11,9 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "framer-motion": "^11.1.9",
+    "gh-pages": "^6.1.1",
+    "i": "^0.3.7",
+    "npm": "^10.7.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icons": "^5.2.1",
