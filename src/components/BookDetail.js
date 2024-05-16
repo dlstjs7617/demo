@@ -1,17 +1,20 @@
-import React from 'react';
+import { Box, Image } from '@chakra-ui/react';
+import React, { useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
+
 const BookDetail = () => {
     const [params] = useSearchParams();
+    console.log(params.get("title"));
 
-    console.log("params" + params);  
-    
+    console.log("params : " + params);  
     const {isbn} = useParams();
 
+    console.log("isbn : " + isbn);
     
-
     return (
     <div>
-        도서 상세 페이지
     </div>
     );
 }
+
+export default BookDetail;

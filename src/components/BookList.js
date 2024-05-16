@@ -122,7 +122,7 @@ const BookList = () => {
                     </Td>
                     <Td>{(page - 1) * 10 + index + 1}</Td>
                     <Td>
-                      <Link to={"/book/search/:isbn"}>{book.title}</Link>
+                    <Link to={`/book/search/${book.isbn}`}>{book.title}</Link>
                     </Td>
                     <Td>{book.author}</Td>
                   </Tr>
