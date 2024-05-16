@@ -61,7 +61,9 @@ const router = createBrowserRouter([
                 element : <BookList />
             },{
                 path : "/book/search/:isbn",
-                element : <BookDetail />
+                element : (<>
+                    <BookDetail />
+                </>)
             }
         ]
     },

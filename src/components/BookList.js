@@ -23,6 +23,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { MdOndemandVideo } from "react-icons/md";
 import { AiFillSun, AiFillMoon } from "react-icons/ai";
 import { Image } from '@chakra-ui/react';
+import { Link } from "react-router-dom";
 
 const BookList = () => {
   // useState 는 화면 랜더링에 반영됨
@@ -121,7 +122,7 @@ const BookList = () => {
                     </Td>
                     <Td>{(page - 1) * 10 + index + 1}</Td>
                     <Td>
-                      <a href={book.url}>{book.title}</a>
+                      <Link to={"/book/search/:isbn"}>{book.title}</Link>
                     </Td>
                     <Td>{book.author}</Td>
                   </Tr>
